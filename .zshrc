@@ -17,8 +17,15 @@ fi
 [[ -e /usr/share/zsh/manjaro-zsh-config ]] && source /usr/share/zsh/manjaro-zsh-config
 [[ -e /usr/share/zsh/manjaro-zsh-prompt ]] && source /usr/share/zsh/manjaro-zsh-prompt
 
-# --- Load Powerlevel10k ---
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# Source Powerlevel10k if available
+if [[ -f "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
+elif [[ -f "/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source "/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme"
+elif [[ -f "/usr/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source "/usr/share/powerlevel10k/powerlevel10k.zsh-theme"
+fi
+
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # --- Load plugins ---
